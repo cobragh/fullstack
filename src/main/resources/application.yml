@@ -1,0 +1,5 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://fullstack:casa5526@cluster0.mnkfks1.mongodb.net/?retryWrites=true&w=majority
+      database: Cluster0
