@@ -1,7 +1,7 @@
-package com.lucas.fullstack.controller;
+package com.lucas.fullstack.login_register.controller;
 
-import com.lucas.fullstack.model.User;
-import com.lucas.fullstack.services.UserServices;
+import com.lucas.fullstack.login_register.model.User;
+import com.lucas.fullstack.login_register.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +23,12 @@ public class UserController {
     @GetMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public List<User> listar(){
-        return service.listar();
+        return service.listAll();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public User listarId(@PathVariable String id){
-        return service.listarPorId(id);
+        return service.listBydId(id);
     }
 }

@@ -1,7 +1,7 @@
-package com.lucas.fullstack.services;
+package com.lucas.fullstack.login_register.services;
 
-import com.lucas.fullstack.model.User;
-import com.lucas.fullstack.repository.UserRepository;
+import com.lucas.fullstack.login_register.model.User;
+import com.lucas.fullstack.login_register.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +19,10 @@ public class UserServices {
         return repository.save(user);
     }
 
-    public List<User> listar(){
+    public List<User> listAll(){
         return repository.findAll();
     }
-    public User listarPorId(String id){
+    public User listBydId(String id){
         return repository.findById(id).get();
     }
 }

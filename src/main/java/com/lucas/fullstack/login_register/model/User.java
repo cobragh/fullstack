@@ -1,4 +1,4 @@
-package com.lucas.fullstack.model;
+package com.lucas.fullstack.login_register.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

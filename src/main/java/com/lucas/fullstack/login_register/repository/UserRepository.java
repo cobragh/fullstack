@@ -1,6 +1,6 @@
-package com.lucas.fullstack.repository;
+package com.lucas.fullstack.login_register.repository;
 
-import com.lucas.fullstack.model.User;
+import com.lucas.fullstack.login_register.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
