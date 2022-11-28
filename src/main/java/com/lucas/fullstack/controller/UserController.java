@@ -2,6 +2,7 @@ package com.lucas.fullstack.controller;
 
 import com.lucas.fullstack.model.User;
 import com.lucas.fullstack.services.UserServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
     private UserServices service;
 
     @ResponseStatus(HttpStatus.ACCEPTED)
