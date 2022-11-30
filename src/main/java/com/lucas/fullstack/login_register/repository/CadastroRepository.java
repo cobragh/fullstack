@@ -11,4 +11,7 @@ public interface CadastroRepository extends MongoRepository<CadastroModel, Strin
 
     Optional<CadastroModel> findByUsername(String username);
     Optional<CadastroModel> findByEmail(String email);
+//    Optional<CadastroModel> typeSenha(String senha);
+//    Optional<CadastroModel> confirmSenha(String confirmSenha);
+
     }

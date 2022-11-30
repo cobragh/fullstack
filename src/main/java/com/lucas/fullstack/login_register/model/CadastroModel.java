@@ -1,18 +1,21 @@
 package com.lucas.fullstack.login_register.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Document(collection = "REGISTER")
 public class CadastroModel {
 
-    @NotNull
     private String idCadastro;
-    @NotNull
+    @NotBlank(message = "Digite um usuário.")
     private String username;
-    @NotNull
+    @NotBlank(message = "Digite uma senha.")
     private String senha;
-    @NotNull
+    @NotBlank(message = "Confirme sua senha.")
+    private String confirmSenha;
+    @NotBlank(message = "Digite um e-mail válido.")
     private String email;
 
     public CadastroModel(String username, String senha, String email) {
@@ -51,5 +54,13 @@ public class CadastroModel {
 
     public void setIdCadastro(String idCadastro) {
         this.idCadastro = idCadastro;
+    }
+
+    public String getConfirmSenha() {
+        return confirmSenha;
+    }
+
+    public void setConfirmSenha(String confirmSenha) {
+        this.confirmSenha = confirmSenha;
     }
 }

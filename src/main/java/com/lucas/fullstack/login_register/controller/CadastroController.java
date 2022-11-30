@@ -23,13 +23,13 @@ public class CadastroController {
         return service.listRegister();
     }
 
-    @GetMapping("/{id}")
-    public CadastroModel listBydId(@PathVariable String id){
-        return service.listById(id);
-    }
-
-    @DeleteMapping
-    public void deleteById(String id){
-        service.deleteById(id);
-    }
+//    @GetMapping("/{id}")
+//    public CadastroModel listBydId(@PathVariable String id) throws Exception {
+//        return service.listById(id);
+//    }
+//
+//    @PostMapping("/delete/{id}")
+//    public void deleteById(@PathVariable String id){
+//        service.deleteById(id);
+//    }
 }
