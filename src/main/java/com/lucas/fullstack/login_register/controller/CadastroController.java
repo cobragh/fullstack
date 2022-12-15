@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/register")
 public class CadastroController {
 
@@ -14,8 +15,8 @@ public class CadastroController {
     CadastroService service;
 
     @PostMapping
-    public CadastroModel addUser(@RequestBody CadastroModel model) throws Exception {
-        return service.addCadastro(model);
+    public void addUser(@RequestBody CadastroModel model) throws Exception {
+        service.addCadastro(model);
     }
 
     @GetMapping
@@ -23,13 +24,4 @@ public class CadastroController {
         return service.listRegister();
     }
 
-//    @GetMapping("/{id}")
-//    public CadastroModel listBydId(@PathVariable String id) throws Exception {
-//        return service.listById(id);
-//    }
-//
-//    @PostMapping("/delete/{id}")
-//    public void deleteById(@PathVariable String id){
-//        service.deleteById(id);
-//    }
 }
