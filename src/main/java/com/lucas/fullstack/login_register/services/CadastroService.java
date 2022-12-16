@@ -1,5 +1,6 @@
 package com.lucas.fullstack.login_register.services;
 
+import com.lucas.fullstack.login_register.model.CadastroDTO;
 import com.lucas.fullstack.login_register.model.CadastroModel;
 import com.lucas.fullstack.login_register.repository.CadastroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,11 @@ public class CadastroService {
     }
     @Autowired
     CadastroRepository repository;
-    CadastroModel cadModelo;
+
+
 
     public void addCadastro(CadastroModel cadastro) throws Exception {
-        if (repository.findByUsername(cadastro.getName()).isPresent()) {
+        if (repository.findByUsername(cadastro.getusername()).isPresent()) {
             throw new Exception("User already used!");
         } else if(repository.findByEmail(cadastro.getEmail()).isPresent()){
             throw new Exception("Email already used.");
@@ -31,10 +33,11 @@ public class CadastroService {
         else {
             cadastro.setIdCadastro(UUID.randomUUID().toString().split("-")[0]);
             cadastro.setSenha(passwordEncoder().encode(cadastro.getSenha()));
-            repository.save(cadastro);
+            CadastroDTO dto = new CadastroDTO(cadastro.getusername(), cadastro.getEmail(), cadastro.getSenha());
+            repository.save(dto);
         }
     }
-    public List<CadastroModel> listRegister() throws Exception{
+    public List<CadastroDTO> listRegister() throws Exception{
         return repository.findAll();
     }
 

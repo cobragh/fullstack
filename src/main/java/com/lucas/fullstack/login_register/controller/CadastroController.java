@@ -1,5 +1,6 @@
 package com.lucas.fullstack.login_register.controller;
 
+import com.lucas.fullstack.login_register.model.CadastroDTO;
 import com.lucas.fullstack.login_register.model.CadastroModel;
 import com.lucas.fullstack.login_register.services.CadastroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class CadastroController {
     }
 
     @GetMapping
-    public List<CadastroModel> listAll() throws Exception {
+    public List<CadastroDTO> listAll() throws Exception {
         return service.listRegister();
     }
 
