@@ -1,6 +1,6 @@
 package com.lucas.fullstack.login_register.controller;
 
-import com.lucas.fullstack.login_register.model.CadastroDTO;
+import com.lucas.fullstack.login_register.dto.CadastroDTO;
 import com.lucas.fullstack.login_register.model.CadastroModel;
 import com.lucas.fullstack.login_register.services.CadastroService;
 import org.springframework.beans.factory.annotation.Autowired;

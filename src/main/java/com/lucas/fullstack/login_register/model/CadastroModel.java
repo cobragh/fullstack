@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
+@Document(collection = "REGISTER")
 public class CadastroModel {
 
     private String idCadastro;
@@ -24,11 +24,11 @@ public class CadastroModel {
         this.email = email;
     }
 
-    public String getusername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setusername(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 

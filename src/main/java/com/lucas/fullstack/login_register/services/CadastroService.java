@@ -1,15 +1,18 @@
 package com.lucas.fullstack.login_register.services;
 
-import com.lucas.fullstack.login_register.model.CadastroDTO;
+import com.lucas.fullstack.login_register.dto.CadastroDTO;
 import com.lucas.fullstack.login_register.model.CadastroModel;
 import com.lucas.fullstack.login_register.repository.CadastroRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CadastroService {
@@ -23,7 +26,7 @@ public class CadastroService {
 
 
     public void addCadastro(CadastroModel cadastro) throws Exception {
-        if (repository.findByUsername(cadastro.getusername()).isPresent()) {
+        if (repository.findByUsername(cadastro.getUsername()).isPresent()) {
             throw new Exception("User already used!");
         } else if(repository.findByEmail(cadastro.getEmail()).isPresent()){
             throw new Exception("Email already used.");
@@ -33,12 +36,19 @@ public class CadastroService {
         else {
             cadastro.setIdCadastro(UUID.randomUUID().toString().split("-")[0]);
             cadastro.setSenha(passwordEncoder().encode(cadastro.getSenha()));
-            CadastroDTO dto = new CadastroDTO(cadastro.getusername(), cadastro.getEmail(), cadastro.getSenha());
-            repository.save(dto);
+            repository.save(cadastro);
         }
     }
     public List<CadastroDTO> listRegister() throws Exception{
-        return repository.findAll();
+        List<CadastroModel> cadastroModels = repository.findAll();
+        if (cadastroModels.isEmpty()) {
+            throw new Exception("Sem dados!");
+        }
+        return new ArrayList<>(cadastroModels
+                .stream()
+                .map(prod -> new ModelMapper()
+                        .map(prod, CadastroDTO.class))
+                .collect(Collectors.toList()));
     }
 
 //    public CadastroModel listById(String id) throws Exception{
